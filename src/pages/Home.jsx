@@ -20,6 +20,6 @@ export const Home = () => {
 		<>
 		<h1>Naves</h1>
 		{naves.map((nave)=> <CardNave key={nave.uid} name={nave.name} uid={nave.uid} /> )}
-		</>
+		</>   
 	);
 }; 
