@@ -14,7 +14,7 @@ export const Nave = props => {
 
    useEffect(()=>{
     console.log('listo')
-    fetch('https://www.swapi.tech/api/starships/9')
+    fetch(`https://www.swapi.tech/api/starships/${naveId}`)
     .then((res)=>res.json())
     .then((data)=>setNave(data.result.properties))
     
@@ -22,11 +22,10 @@ export const Nave = props => {
 
 
   return (
-    <div className="container text-center">
+    <div className="d-flex gap-3 flex-wrap justify-content-center">
        
       {/* Display the title of the todo element dynamically retrieved from the store using theId. */}
       <p>Nombre {nave.name} </p>
-      <p>Nombre {naveId} </p>
       <p>Modelo {nave.model}</p>
       <p className="my-4" />  {/* A horizontal rule for visual separation. */}
 
