@@ -14,7 +14,7 @@ export const initialStore=()=>{
       }
     ],
     message: 'hola',
-    naveFav: []
+    charFav: []
  
 
   }
@@ -37,14 +37,14 @@ export default function storeReducer(store, action = {}) {
       };
     case 'toggle':
       let update = [];
-      if (store.naveFav.includes(action.payload)) {
-        update= store.naveFav.filter((nave) => nave != action.payload)
+      if (store.charFav.includes(action.payload)) {
+        update= store.charFav.filter((character) => character != action.payload)
       } else {
-        update = [...store.naveFav, action.payload];
+        update = [...store.charFav, action.payload];
       }
       return {
         ...store,
-        naveFav: update
+        charFav: update
       };
 
     default:

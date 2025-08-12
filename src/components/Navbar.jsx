@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { Character } from "../pages/Character.jsx";
 
 export const Navbar = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -17,7 +18,7 @@ export const Navbar = () => {
             data-bs-auto-close="false" //  
             aria-expanded="false"
           >
-            Favoritos {store.naveFav.length}{" "}
+            Favoritos {store.charFav.length}{" "}
 
           </button>
 
@@ -25,23 +26,23 @@ export const Navbar = () => {
             className="dropdown-menu dropdown-menu-end"
             aria-labelledby="dropdownMenuButton"
           >
-            {store.naveFav.length === 0 && (
+            {store.charFav.length === 0 && (
               <li className="dropdown-item text-muted">Sin favoritos</li>
             )}
 
-            {store.naveFav.map((nave, index) => (
+            {store.charFav.map((char, index) => (
               <li
                 key={index}
                 className="dropdown-item d-flex justify-content-between align-items-center"
               >
-                {nave}
+                {char}
                 <i
                   className="fa-solid fa-trash text-danger ms-2"
                   style={{ cursor: "pointer" }}
                   onClick={() =>
                     dispatch({
                       type: "toggle",
-                      payload: nave,
+                      payload: char,
                     })
                   }
                 ></i>

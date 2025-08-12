@@ -3,14 +3,14 @@ import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-export const Nave = (props) => {
-  const [nave, setNave] = useState({});
-  const { naveId } = useParams();
+export const Character = (props) => {
+  const [character, setCharacter] = useState({});
+  const { characterId } = useParams();
 
   useEffect(() => {
-    fetch(`https://www.swapi.tech/api/people/${naveId}`)
+    fetch(`https://www.swapi.tech/api/people/${characterId}`)
       .then((res) => res.json())
-      .then((data) => setNave(data.result.properties));
+      .then((data) => setCharacter(data.result.properties));
   }, []);
 
   return (
@@ -33,7 +33,7 @@ export const Nave = (props) => {
         />
       </div>
       <div className="col-md-6">
-        <h1 className="text-center">{nave.name}</h1>
+        <h1 className="text-center">{character.name}</h1>
         <p className="text-justify mt-3">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis cupiditate quo officia minus magnam consequuntur alias iste blanditiis natus facere nesciunt consequatur, facilis nemo sit suscipit qui, molestias placeat. Quasi!
         </p>
@@ -49,27 +49,27 @@ export const Nave = (props) => {
     <div className="row text-justify">
       <div className="col">
         <strong className="text-danger">Name</strong><br />
-        <span className="text-danger">{nave.name}</span>
+        <span className="text-danger">{character.name}</span>
       </div>
       <div className="col">
         <strong className="text-danger">birth <br/> year</strong><br />
-        <span className="text-danger">{nave.birth_year}</span>
+        <span className="text-danger">{character.birth_year}</span>
       </div>
       <div className="col">
         <strong className="text-danger">Género</strong><br />
-        <span className="text-danger">{nave.gender}</span>
+        <span className="text-danger">{character.gender}</span>
       </div>
       <div className="col">
         <strong className="text-danger">Height</strong><br />
-        <span className="text-danger">{nave.height}</span>
+        <span className="text-danger">{character.height}</span>
       </div>
       <div className="col">
         <strong className="text-danger">Skin color <br/>piel</strong><br />
-        <span className="text-danger">{nave.skin_color}</span>
+        <span className="text-danger">{character.skin_color}</span>
       </div>
       <div className="col">
         <strong className="text-danger">Eye Color</strong><br />
-        <span className="text-danger">{nave.eye_color}</span>
+        <span className="text-danger">{character.eye_color}</span>
       </div>
     </div>
   </div>      
@@ -79,7 +79,6 @@ export const Nave = (props) => {
     </>
   );
 };
-
-Nave.propTypes = {
+Character.propTypes = {
   match: PropTypes.object
 };

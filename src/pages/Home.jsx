@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { CardNave } from "../components/CardNave.jsx";
+import { CardCharacter } from "../components/CardCharacter.jsx";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { CardPlanet } from "../components/CardPlanet.jsx";
+import { Character } from "./Character.jsx";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
-  const [naves, setNaves] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [planetas, setPlanetas] = useState([]);
 
   useEffect(() => {
     fetch('https://www.swapi.tech/api/people')
       .then((res) => res.json())
-      .then((data) => setNaves(data.results));
+      .then((data) => setCharacters(data.results));
   }, []);
 
     useEffect(() => {
@@ -24,11 +25,11 @@ export const Home = () => {
     <>
       <h1 className="text-danger">Personajes</h1>
       <div className="row flex-row flex-nowrap overflow-x-auto">
-        {naves.map((nave) => (
-          <CardNave
-            key={nave.uid}
-            name={nave.name}
-            uid={nave.uid}
+        {characters.map((character) => (
+          <CardCharacter
+            key={character.uid}
+            name={character.name}
+            uid={character.uid}
           />
         ))}
 		
