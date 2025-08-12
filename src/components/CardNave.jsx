@@ -11,11 +11,13 @@ export const CardNave = (props) => {
           <div className="card mx-1" style={{ width: "18rem" }}>
             <img src={rigoImageUrl} className="card-img-top" alt="..." />
             <div className="card-body">
-              <h5 className="card-title">{props.name}</h5>
+              <h5 className="card-title">Nombre {props.name}</h5>
+              <br/>
+              <h5 className="card-title">ID: {props.uid}</h5>
               <Link to={'/nave/' + props.uid} className="btn btn-primary">
                 Ver personaje
               </Link>
-              <i className="fa-regular fa-heart mx-2" onClick={()=>dispatch({
+              <i className="fa-regular fa-heart mx-4" onClick={()=>dispatch({
                 type: 'toggle',
                 payload: props.name
               })} ></i>
