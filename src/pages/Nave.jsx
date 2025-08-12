@@ -1,37 +1,26 @@
-// Import necessary hooks and components from react-router-dom and other libraries.
-import { Link, useParams } from "react-router-dom";  // To use link for navigation and useParams to get URL parameters
-import PropTypes from "prop-types";  // To define prop types for this component
- 
+import { Link, useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
+export const Nave = (props) => {
+  const [nave, setNave] = useState({});
+  const { naveId } = useParams();
 
-export const Nave = props => {
-
-  const [nave,setNave] = useState({})
-
-  const { naveId } = useParams()
-   console.log(naveId)
-
-   useEffect(()=>{
-    console.log('listo')
-    fetch(`https://www.swapi.tech/api/starships/${naveId}`)
-    .then((res)=>res.json())
-    .then((data)=>setNave(data.result.properties))
-    
-   },[])
-
+  useEffect(() => {
+    fetch(`https://www.swapi.tech/api/people/${naveId}`)
+      .then((res) => res.json())
+      .then((data) => setNave(data.result.properties));
+  }, [naveId]);
 
   return (
-    <div className="d-flex gap-3 flex-wrap justify-content-center">
-       
-      {/* Display the title of the todo element dynamically retrieved from the store using theId. */}
-      <p>Nombre {nave.name} </p>
-      <p>Modelo {nave.model}</p>
-      <p className="my-4" />  {/* A horizontal rule for visual separation. */}
+    <div className="container text-center">
+      <p>Nombre: {nave.name}</p>
+      <p>Género: {nave.gender}</p>
+      <p>Color de cabello: {nave.hair_color}</p>     
+      <p>Color de ojos: {nave.eye_color}</p>       
 
-      {/* A Link component acts as an anchor tag but is used for client-side routing to prevent page reloads. */}
       <Link to="/">
-        <span className="btn btn-primary btn-lg" href="#" role="button">
+        <span className="btn btn-primary btn-lg" role="button">
           Back home
         </span>
       </Link>
@@ -39,9 +28,6 @@ export const Nave = props => {
   );
 };
 
-// Use PropTypes to validate the props passed to this component, ensuring reliable behavior.
 Nave.propTypes = {
-  // Although 'match' prop is defined here, it is not used in the component.
-  // Consider removing or using it as needed.
   match: PropTypes.object
 };
