@@ -27,7 +27,7 @@ export const Navbar = () => {
             aria-labelledby="dropdownMenuButton"
           >
             {store.charFav.length === 0 && (
-              <li className="dropdown-item text-muted">Sin favoritos</li>
+              <li className="dropdown-item text-muted">(Vacío))</li>
             )}
 
             {store.charFav.map((char, index) => (
