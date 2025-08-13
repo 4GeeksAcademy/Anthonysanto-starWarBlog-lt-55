@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import starWarsUrl from "../assets/img/star-war.png";
 
 export const Character = (props) => {
   const [character, setCharacter] = useState({});
@@ -15,14 +16,6 @@ export const Character = (props) => {
 
   return (
     <>
-      <Link to="/">
-           <img
-      src={rigoImageUrl}
-      className="img-fluid"
-      alt="..."
-      style={{ maxWidth: "100px", height: "100px" }}
-    />   
-      </Link>
     <div className="row align-items-start">
       <div className="col-md-6 text-center">
         <img

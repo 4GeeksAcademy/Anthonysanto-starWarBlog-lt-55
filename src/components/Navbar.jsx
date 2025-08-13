@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import { Character } from "../pages/Character.jsx";
+import starWarsUrl from "../assets/img/star-war.png";
 
 export const Navbar = () => {
   const { store, dispatch } = useGlobalReducer();
 
 
   return (
+    <>
     <nav className="navbar navbar-light bg-light">
+          <Link to="/">
+               <img
+          src={starWarsUrl}
+          className="img-fluid"
+          alt="..."
+          style={{ maxWidth: "100px", height: "100px" }}/>   
+          </Link>
       <div className="container d-flex">
         <div className="dropdown ms-auto">
           <button
@@ -27,7 +35,7 @@ export const Navbar = () => {
             aria-labelledby="dropdownMenuButton"
           >
             {store.charFav.length === 0 && (
-              <li className="dropdown-item text-muted">(Vacío))</li>
+              <li className="dropdown-item text-muted">(Vacio))</li>
             )}
 
             {store.charFav.map((char, index) => (
@@ -52,5 +60,6 @@ export const Navbar = () => {
         </div>
       </div>
     </nav>
+    </>
   );
 };

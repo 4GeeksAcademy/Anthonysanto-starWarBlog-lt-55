@@ -2,17 +2,16 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import starWarsUrl from "../assets/img/star-war.png";
 
-export const Planet = (props) => {
-  const [planet, setPlanet] = useState({});
-  const { planetId } = useParams();
+export const Starship = (props) => {
+  const [starship, setStarship] = useState({});
+  const { starshipId } = useParams();
 
   useEffect(() => {
-    fetch(`https://www.swapi.tech/api/planets/${planetId}`)
+    fetch(`https://www.swapi.tech/api/starships/${starshipId}`)
       .then((res) => res.json())
-      .then((data) => setPlanet(data.result.properties));
-  }, [planetId]);
+      .then((data) => setStarship(data.result.properties));
+  }, [starshipId]);
 
   return (
     <>
@@ -26,7 +25,7 @@ export const Planet = (props) => {
         />
       </div>
       <div className="col-md-6">
-        <h1 className="text-center">{planet.name}</h1>
+        <h1 className="text-center">{starship.name}</h1>
         <p className="text-justify mt-3">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis cupiditate quo officia minus magnam consequuntur alias iste blanditiis natus facere nesciunt consequatur, facilis nemo sit suscipit qui, molestias placeat. Quasi!
         </p>
@@ -42,27 +41,27 @@ export const Planet = (props) => {
     <div className="row text-justify">
       <div className="col">
         <strong className="text-danger">Name</strong><br />
-        <span className="text-danger">{planet.name}</span>
+        <span className="text-danger">{starship.name}</span>
       </div>
       <div className="col">
-        <strong className="text-danger">Climate<br/></strong><br />
-        <span className="text-danger">{planet.climate}</span>
+        <strong className="text-danger">manufacturer<br/></strong><br />
+        <span className="text-danger">{starship.manufacturer}</span>
       </div>
       <div className="col">
-        <strong className="text-danger">Population</strong><br />
-        <span className="text-danger">{planet.population}</span>
+        <strong className="text-danger">cargo <br/>capacity</strong><br />
+        <span className="text-danger">{starship.cargo_capacity}</span>
       </div>
       <div className="col">
-        <strong className="text-danger">Orbital</strong><br />
-        <span className="text-danger">{planet.orbital_period}</span>
+        <strong className="text-danger">consumables</strong><br />
+        <span className="text-danger">{starship.consumables}</span>
       </div>
       <div className="col">
-        <strong className="text-danger">Rotation <br/>period</strong><br />
-        <span className="text-danger">{planet.rotation_period}</span>
+        <strong className="text-danger">starship <br/>class</strong><br />
+        <span className="text-danger">{starship.starship_class}</span>
       </div>
       <div className="col">
-        <strong className="text-danger">Diameter</strong><br />
-        <span className="text-danger">{planet.diameter}</span>
+        <strong className="text-danger">model</strong><br />
+        <span className="text-danger">{starship.model}</span>
       </div>
     </div>
   </div>      
@@ -73,6 +72,6 @@ export const Planet = (props) => {
   );
 };
 
-Planet.propTypes = {
+Starship.propTypes = {
   match: PropTypes.object
 };

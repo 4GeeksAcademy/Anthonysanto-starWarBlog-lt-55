@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
-export const CardPlanet = (props) => {
+export const CardStarship = (props) => {
   const { store, dispatch } = useGlobalReducer();
 
   const isFavorite = store.charFav.includes(props.name);
@@ -15,8 +15,8 @@ export const CardPlanet = (props) => {
           <h5 className="card-title">{props.name}</h5>
           <br />
           <h5 className="card-title">ID: {props.uid}</h5>
-          <Link to={`/Planet/${props.uid}`} className="btn btn-primary">
-            Ver planeta
+          <Link to={`/Starship/${props.uid}`} className="btn btn-primary">
+            Ver Nave
           </Link>
 
           {/* si está seleccionado lo coloca relleno else normal */}
